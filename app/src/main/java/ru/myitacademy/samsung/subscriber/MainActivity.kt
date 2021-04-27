@@ -1,5 +1,6 @@
 package ru.myitacademy.samsung.subscriber
 
+import android.Manifest
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 //  1. //
 registerReceiver(receiver,IntentFilter("android.intent.action.AIRPLANE_MODE"))
 //registerReceiver(receiver,IntentFilter("android.net.wifi.WIFI_STATE_CHANGED"))
- registerReceiver(receiver2, IntentFilter("Козьма_Прутков"))
+ registerReceiver(receiver2, IntentFilter("Козьма_Прутков"), Manifest.permission.INTERNET,null)
         }
 
     override fun onDestroy() {
