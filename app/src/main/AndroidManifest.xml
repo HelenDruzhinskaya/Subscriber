@@ -12,7 +12,7 @@
         <activity android:name=".SimpleClicker"></activity>
 
          <!--
-         Используется только для систем ниже API 24, с Android 7.0 уже не работает
+         Используется только для систем ниже API 26, с Android 8.0 данная регистрация игнорируется ОС
          <receiver
             android:name=".My2Receiver"
             android:enabled="true"
