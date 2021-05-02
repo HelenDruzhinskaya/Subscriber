@@ -1,6 +1,7 @@
 package ru.myitacademy.samsung.subscriber
 
 import android.Manifest
+import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,38 +9,46 @@ import android.os.Bundle
 class MainActivity : AppCompatActivity() {
     val receiver=MyReceiver()
     val receiver2 = My2Receiver()
-    override fun onCreate(savedInstanceState: Bundle?) {
+       override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//  1. //
-registerReceiver(receiver,IntentFilter("android.intent.action.AIRPLANE_MODE"))
-//registerReceiver(receiver,IntentFilter("android.net.wifi.WIFI_STATE_CHANGED"))
- registerReceiver(receiver2, IntentFilter("Козьма_Прутков"), Manifest.permission.INTERNET,null)
-        }
+     //  1. регистрируем приёмник в методе onCreate()
+           val intentFilter = IntentFilter("android.intent.action.AIRPLANE_MODE")
+registerReceiver(receiver,intentFilter)
 
-    override fun onDestroy() {
+           /* приёмник для упражнения 4.6.2
+           registerReceiver(receiver,IntentFilter("android.net.wifi.WIFI_STATE_CHANGED"))
+            */
+           /* приёмник для упражнения 4.6.3
+ registerReceiver(receiver2, IntentFilter("Козьма_Прутков"))
+*/
+           /* приёмник  для тестирования упражнений 4.7, в разделе 4.6 не используется
+           registerReceiver(receiver, IntentFilter("ru.myitacademy.samsung.advertising.POST"))
+            */
+       }
+
+  /* 1.   override fun onDestroy() {
         super.onDestroy()
-//  1.  //
-unregisterReceiver(receiver)
-    }
+        unregisterReceiver(receiver)
+    }*/
 
-    override fun onStart() {
+    /*2. override fun onStart() {
         super.onStart()
-        //2.  //   registerReceiver(receiver, IntentFilter("android.intent.action.AIRPLANE_MODE"))
+        registerReceiver(receiver, IntentFilter("android.intent.action.AIRPLANE_MODE"))
     }
 
     override fun onStop() {
         super.onStop()
-     //2.  //   unregisterReceiver(receiver)
-    }
+        unregisterReceiver(receiver)
+    }*/
 
-    override fun onResume() {
+    /* 3. override fun onResume() {
         super.onResume()
-        //3.  //   registerReceiver(receiver, IntentFilter("android.intent.action.AIRPLANE_MODE"))
+        registerReceiver(receiver, IntentFilter("android.intent.action.AIRPLANE_MODE"))
     }
 
     override fun onPause() {
         super.onPause()
-        //3. //    unregisterReceiver(receiver)
-    }
+        unregisterReceiver(receiver)
+    }*/
 }
